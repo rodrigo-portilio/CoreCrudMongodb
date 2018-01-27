@@ -20,21 +20,21 @@ namespace CoreCrudMongodb.Controllers
             this.customerService = customerService;
         }
 
-        // GET: Clients
+        // GET: Customer
         public ActionResult Index()
         {
             var customers = customerService.GetAll();
             return View(customers);
         }
 
-        // GET: Clients/Create
+        // GET: Customer/Create
         public ActionResult Create()
         {
             var customer = new Customer();
             return View("form", customer);
         }
 
-        // POST: Clients/Create
+        // POST: Customer/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Update(Customer customer)
@@ -56,14 +56,14 @@ namespace CoreCrudMongodb.Controllers
             }
         }
 
-        // GET: Clients/Edit/5
+        // GET: Customer/Edit/5
         public ActionResult Edit(string id)
         {
             var customer = customerService.GetById(id);
             return View("form", customer);
         }
 
-        // GET: Clients/Delete/5
+        // GET: Customer/Delete/5
         public ActionResult Delete(string id)
         {
             try

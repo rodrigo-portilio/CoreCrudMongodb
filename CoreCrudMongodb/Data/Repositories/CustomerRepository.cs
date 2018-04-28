@@ -37,7 +37,14 @@ namespace CoreCrudMongodb.Data.Repositories
             if (customer.Id != null)
             {
                 var filter = Builders<Customer>.Filter.Eq(x => x.Id, customer.Id);
-                var update = Builders<Customer>.Update.Set(x => x, customer);
+                var update = Builders<Customer>.Update
+                    .Set(x => x.City, customer.City)
+                    .Set(x => x.Country, customer.Country)
+                    .Set(x => x.Email, customer.Email)
+                    .Set(x => x.FirstName, customer.FirstName)
+                    .Set(x => x.LastName, customer.LastName)
+                    .Set(x => x.State, customer.State)
+                    .Set(x => x.Street, customer.Street);                    
                 dbContext.Customers.UpdateOne(filter, update);
             }
             else
